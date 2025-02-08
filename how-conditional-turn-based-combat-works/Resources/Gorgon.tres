@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://bg506p3luyecq"]
+
+[ext_resource type="Texture2D" uid="uid://caveexkqcmqev" path="res://Assets/gorgon_sprite.png" id="1_2g1k5"]
+[ext_resource type="Script" path="res://Character.gd" id="1_cp317"]
+[ext_resource type="PackedScene" uid="uid://dsox1o2mewgc3" path="res://Scenes/vfx.tscn" id="3_y75b3"]
+
+[resource]
+script = ExtResource("1_cp317")
+title = "Gorgon"
+icon = ExtResource("1_2g1k5")
+texture = ExtResource("1_2g1k5")
+agility = 12
+vfx_node = ExtResource("3_y75b3")

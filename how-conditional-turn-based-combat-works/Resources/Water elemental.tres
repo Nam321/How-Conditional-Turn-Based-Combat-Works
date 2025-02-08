@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://cj7ssvln4voej"]
+
+[ext_resource type="Texture2D" uid="uid://cj4j76b6galur" path="res://Assets/waterelemental_sprite.png" id="1_32q3c"]
+[ext_resource type="Script" path="res://Character.gd" id="2_t34o1"]
+
+[resource]
+script = ExtResource("2_t34o1")
+title = "Water elemental"
+icon = ExtResource("1_32q3c")
+texture = ExtResource("1_32q3c")
+agility = 16

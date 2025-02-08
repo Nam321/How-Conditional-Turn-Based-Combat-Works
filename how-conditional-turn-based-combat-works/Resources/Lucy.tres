@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Character" load_steps=4 format=3 uid="uid://b22yqipjyrkr1"]
+
+[ext_resource type="Texture2D" uid="uid://mrykwxkfxuvv" path="res://Assets/13.png" id="1_2iyol"]
+[ext_resource type="Script" path="res://Character.gd" id="1_j2md7"]
+[ext_resource type="Texture2D" uid="uid://va5ggpn66jby" path="res://Assets/14.png" id="3_p2vw8"]
+
+[resource]
+script = ExtResource("1_j2md7")
+title = "Lucy"
+icon = ExtResource("1_2iyol")
+texture = ExtResource("3_p2vw8")
+agility = 17

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Character" load_steps=3 format=3 uid="uid://c6nnyalglylas"]
+
+[ext_resource type="Texture2D" uid="uid://st3gboahbj0i" path="res://Assets/harpy_sprite.png" id="1_3l88y"]
+[ext_resource type="Script" path="res://Character.gd" id="2_wf8ft"]
+
+[resource]
+script = ExtResource("2_wf8ft")
+title = "HArpy"
+icon = ExtResource("1_3l88y")
+texture = ExtResource("1_3l88y")
+agility = 11
