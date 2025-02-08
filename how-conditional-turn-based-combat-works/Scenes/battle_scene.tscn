@@ -23,10 +23,14 @@ enemy_button = ExtResource("2_fs322")
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Timeline" type="HBoxContainer" parent="UI"]
-offset_left = 59.0
-offset_top = 3.0
-offset_right = 319.0
-offset_bottom = 43.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.0
+offset_top = 57.0
+offset_right = 129.0
+offset_bottom = 97.0
+grow_horizontal = 2
 
 [node name="TimelineSlot" type="Panel" parent="UI/Timeline"]
 custom_minimum_size = Vector2(40, 40)
@@ -95,16 +99,15 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="Option" type="VBoxContainer" parent="UI"]
-visible = false
-anchors_preset = -1
-anchor_left = 0.174
-anchor_top = 0.265
-anchor_right = 0.174
-anchor_bottom = 0.265
-offset_left = -20.448
-offset_top = -19.72
-offset_right = 19.552
-offset_bottom = 20.28
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -113.0
+offset_right = 20.0
+offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -124,25 +127,32 @@ script = ExtResource("4_ffwu6")
 [node name="EnemySelection" type="VBoxContainer" parent="UI"]
 unique_name_in_owner = true
 visible = false
-offset_left = 181.0
-offset_top = 141.0
-offset_right = 221.0
-offset_bottom = 181.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -111.0
+offset_right = 20.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Players" type="Node2D" parent="."]
 
 [node name="Player" type="Sprite2D" parent="Players"]
-position = Vector2(317, 157)
+position = Vector2(704, 169)
 script = ExtResource("2_ptxip")
 character = ExtResource("3_a8cvi")
 
 [node name="Player2" type="Sprite2D" parent="Players"]
-position = Vector2(268, 182)
+position = Vector2(652, 215)
 script = ExtResource("2_ptxip")
 character = ExtResource("4_0pdiu")
 
 [node name="Player3" type="Sprite2D" parent="Players"]
-position = Vector2(312, 216)
+position = Vector2(708, 274)
 script = ExtResource("2_ptxip")
 character = ExtResource("5_kbemd")
 
@@ -150,19 +160,23 @@ character = ExtResource("5_kbemd")
 position = Vector2(341, 160)
 
 [node name="Enemy" type="Sprite2D" parent="Enemies"]
-position = Vector2(-250, -3)
+position = Vector2(86, 14)
 script = ExtResource("2_ptxip")
 character = ExtResource("6_rmyri")
 
 [node name="Enemy2" type="Sprite2D" parent="Enemies"]
-position = Vector2(-211, 22)
+position = Vector2(141, 47)
 script = ExtResource("2_ptxip")
 character = ExtResource("10_epqpy")
 
 [node name="Enemy3" type="Sprite2D" parent="Enemies"]
-position = Vector2(-262, 51)
+position = Vector2(75, 86)
 script = ExtResource("2_ptxip")
 character = ExtResource("7_j4jbj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 204)
+zoom = Vector2(2, 2)
 
 [connection signal="pressed" from="UI/Option/Attack" to="UI/Option/Attack" method="_on_pressed"]
 [connection signal="pressed" from="UI/Option/Haste" to="UI/Option/Haste" method="_on_pressed"]
