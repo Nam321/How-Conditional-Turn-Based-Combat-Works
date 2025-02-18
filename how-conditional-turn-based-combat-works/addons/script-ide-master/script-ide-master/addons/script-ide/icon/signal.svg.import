@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://bnccvnaloqnte"
+path="res://.godot/imported/signal.svg-6dd9bdc7e3795d10944e2ce54a5619bd.image"
+
+[deps]
+
+source_file="res://addons/script-ide-master/script-ide-master/addons/script-ide/icon/signal.svg"
+dest_files=["res://.godot/imported/signal.svg-6dd9bdc7e3795d10944e2ce54a5619bd.image"]
+
+[params]
+

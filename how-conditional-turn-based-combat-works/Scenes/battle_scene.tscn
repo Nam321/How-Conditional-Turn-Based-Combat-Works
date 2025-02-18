@@ -1,16 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpp3e0l8juudt"]
+[gd_scene load_steps=14 format=3 uid="uid://cpp3e0l8juudt"]
 
-[ext_resource type="Script" path="res://battle_scene.gd" id="1_4o4nq"]
-[ext_resource type="PackedScene" uid="uid://dpd8d2nuknfwr" path="res://Scenes/enemy_button.tscn" id="2_fs322"]
-[ext_resource type="Script" path="res://CharacterSprite.gd" id="2_ptxip"]
+[ext_resource type="Script" path="res://Scripts/battle_scene.gd" id="1_4o4nq"]
+[ext_resource type="PackedScene" uid="uid://dpd8d2nuknfwr" path="res://Scenes/select_button.tscn" id="2_fs322"]
+[ext_resource type="Script" path="res://Scripts/CharacterSprite.gd" id="2_ptxip"]
 [ext_resource type="Script" path="res://Scenes/attack.gd" id="3_58f5c"]
 [ext_resource type="Resource" uid="uid://deq4le1e0p3pv" path="res://Resources/Bob.tres" id="3_a8cvi"]
 [ext_resource type="Resource" uid="uid://b22yqipjyrkr1" path="res://Resources/Lucy.tres" id="4_0pdiu"]
+[ext_resource type="Script" path="res://Scenes/skill.gd" id="4_bthrp"]
 [ext_resource type="Script" path="res://Scenes/haste.gd" id="4_ffwu6"]
 [ext_resource type="Resource" uid="uid://62k2dqpinytf" path="res://Resources/Tim.tres" id="5_kbemd"]
 [ext_resource type="Resource" uid="uid://bg506p3luyecq" path="res://Resources/Gorgon.tres" id="6_rmyri"]
 [ext_resource type="Resource" uid="uid://cj7ssvln4voej" path="res://Resources/Water elemental.tres" id="7_j4jbj"]
 [ext_resource type="Resource" uid="uid://c6nnyalglylas" path="res://Resources/Harpy.tres" id="10_epqpy"]
+[ext_resource type="Texture2D" uid="uid://xmqq3fq6c21c" path="res://Assets/BG_FF2_09.png" id="12_ovqkf"]
 
 [node name="BattleScene" type="Node2D" node_paths=PackedStringArray("player_group", "enemy_group", "timeline", "options")]
 script = ExtResource("1_4o4nq")
@@ -19,6 +21,7 @@ enemy_group = NodePath("Enemies")
 timeline = NodePath("UI/Timeline")
 options = NodePath("UI/Option")
 enemy_button = ExtResource("2_fs322")
+ally_button = ExtResource("2_fs322")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -26,11 +29,12 @@ enemy_button = ExtResource("2_fs322")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -131.0
-offset_top = 57.0
-offset_right = 129.0
-offset_bottom = 97.0
+offset_left = -141.0
+offset_top = 106.0
+offset_right = 119.0
+offset_bottom = 146.0
 grow_horizontal = 2
+scale = Vector2(0.80948, 0.877559)
 
 [node name="TimelineSlot" type="Panel" parent="UI/Timeline"]
 custom_minimum_size = Vector2(40, 40)
@@ -104,8 +108,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -113.0
+offset_left = -56.0
+offset_top = -136.0
 offset_right = 20.0
 offset_bottom = -69.0
 grow_horizontal = 2
@@ -117,6 +121,11 @@ theme_override_font_sizes/font_size = 8
 text = "Attack"
 script = ExtResource("3_58f5c")
 
+[node name="Skill" type="Button" parent="UI/Option"]
+layout_mode = 2
+text = "Skill"
+script = ExtResource("4_bthrp")
+
 [node name="Haste" type="Button" parent="UI/Option"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
@@ -127,17 +136,39 @@ script = ExtResource("4_ffwu6")
 [node name="EnemySelection" type="VBoxContainer" parent="UI"]
 unique_name_in_owner = true
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -111.0
-offset_right = 20.0
-offset_bottom = -71.0
+anchors_preset = -1
+anchor_left = 0.486
+anchor_top = 0.325
+anchor_right = 0.486
+anchor_bottom = 0.325
+offset_left = -39.872
+offset_top = -29.6
+offset_right = 40.128
+offset_bottom = 29.4
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="AllySelection" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = -1
+anchor_left = 0.486
+anchor_top = 0.325
+anchor_right = 0.486
+anchor_bottom = 0.325
+offset_left = -39.872
+offset_top = -29.6
+offset_right = 40.128
+offset_bottom = 29.4
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 295.0
+offset_top = 76.0
+offset_right = 807.0
+offset_bottom = 332.0
+texture = ExtResource("12_ovqkf")
 
 [node name="Players" type="Node2D" parent="."]
 
@@ -146,15 +177,39 @@ position = Vector2(704, 169)
 script = ExtResource("2_ptxip")
 character = ExtResource("3_a8cvi")
 
+[node name="ProgressBar" type="ProgressBar" parent="Players/Player"]
+offset_left = -13.0
+offset_top = -25.0
+offset_right = 46.0
+offset_bottom = 2.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+
 [node name="Player2" type="Sprite2D" parent="Players"]
 position = Vector2(652, 215)
 script = ExtResource("2_ptxip")
 character = ExtResource("4_0pdiu")
 
+[node name="ProgressBar3" type="ProgressBar" parent="Players/Player2"]
+offset_left = 39.0
+offset_top = 27.0
+offset_right = 98.0
+offset_bottom = 54.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+
 [node name="Player3" type="Sprite2D" parent="Players"]
 position = Vector2(708, 274)
 script = ExtResource("2_ptxip")
 character = ExtResource("5_kbemd")
+
+[node name="ProgressBar2" type="ProgressBar" parent="Players/Player3"]
+offset_left = -70.0
+offset_top = -86.0
+offset_right = -11.0
+offset_bottom = -59.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(341, 160)
@@ -164,19 +219,45 @@ position = Vector2(86, 14)
 script = ExtResource("2_ptxip")
 character = ExtResource("6_rmyri")
 
+[node name="ProgressBar4" type="ProgressBar" parent="Enemies/Enemy"]
+offset_left = -8.0
+offset_top = -40.0
+offset_right = 51.0
+offset_bottom = -13.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+
 [node name="Enemy2" type="Sprite2D" parent="Enemies"]
 position = Vector2(141, 47)
 script = ExtResource("2_ptxip")
 character = ExtResource("10_epqpy")
+
+[node name="ProgressBar5" type="ProgressBar" parent="Enemies/Enemy2"]
+offset_left = -11.0
+offset_top = -36.0
+offset_right = 48.0
+offset_bottom = -9.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
 
 [node name="Enemy3" type="Sprite2D" parent="Enemies"]
 position = Vector2(75, 86)
 script = ExtResource("2_ptxip")
 character = ExtResource("7_j4jbj")
 
+[node name="ProgressBar6" type="ProgressBar" parent="Enemies/Enemy3"]
+offset_left = -17.0
+offset_top = -44.0
+offset_right = 42.0
+offset_bottom = -17.0
+scale = Vector2(0.5, 0.5)
+value = 100.0
+
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(575, 204)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 
 [connection signal="pressed" from="UI/Option/Attack" to="UI/Option/Attack" method="_on_pressed"]
+[connection signal="pressed" from="UI/Option/Skill" to="UI/Option/Skill" method="_on_pressed"]
 [connection signal="pressed" from="UI/Option/Haste" to="UI/Option/Haste" method="_on_pressed"]

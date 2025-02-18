@@ -9,13 +9,18 @@ class_name Character
 		agility = value
 		speed = 200.0 / (log(agility) + 2) - 25
 		queue_reset()
- 
 @export var vfx_node : PackedScene = preload("res://Scenes/vfx.tscn")
+@export var damage : float
+@export var health : float
+@export var skill_list : Array
+
+
 var speed: float
 var queue : Array[float]
 var status = 1
 var node
- 
+var temp_health : float
+
 func queue_reset():
 	queue.clear()
 	for i in range(4):
@@ -27,7 +32,7 @@ func queue_reset():
  
 func tween_movement(shift, tree):
 	var tween = tree.create_tween()
-	tween.tween_property(node, "position", node.position + shift, 0.2)
+	tween.tween_property(node, "position", node.position + shift, 0.5)
 	await tween.finished
  
  
@@ -40,7 +45,12 @@ func attack(tree):
 	await tween_movement(shift, tree)
  
 	EventBus.next_attack.emit()
- 
+
+func take_damage(amount):
+	health = health + temp_health - amount
+	return health
+
+
  
 func pop_out():
 	queue.pop_front()

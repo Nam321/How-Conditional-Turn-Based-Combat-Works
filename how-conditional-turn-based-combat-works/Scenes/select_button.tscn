@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpd8d2nuknfwr"]
 
-[ext_resource type="Script" path="res://enemy_button.gd" id="1_7qnjg"]
+[ext_resource type="Script" path="res://Scripts/enemy_button.gd" id="1_7qnjg"]
 
-[node name="EnemyButton" type="Button"]
+[node name="SelectButton" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
 theme_override_font_sizes/font_size = 8

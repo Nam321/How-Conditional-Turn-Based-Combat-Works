@@ -6,6 +6,7 @@ extends Node2D
  
 @export var options : VBoxContainer
 @export var enemy_button : PackedScene
+@export var ally_button : PackedScene
  
 var sorted_array = []
 var players : Array[Character]
@@ -14,6 +15,10 @@ var enemies : Array[Character]
 func _ready():
 	for player in player_group.get_children():
 		players.append(player.character)
+		
+		var button_ally = enemy_button.instantiate()
+		button_ally.character = player.character
+		%AllySelection.add_child(button_ally)
  
 	for enemy in enemy_group.get_children():
 		enemies.append(enemy.character)
@@ -89,3 +94,7 @@ func show_options():
 func choose_enemy():
 	%EnemySelection.show()
 	%EnemySelection.get_child(0).grab_focus()
+	
+func choose_ally():
+	%AllySelection.show()
+	%AllySelection.get_child(0).grab_focus()

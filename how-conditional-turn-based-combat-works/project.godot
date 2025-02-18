@@ -8,6 +8,10 @@
 
 config_version=5
 
+[addon_importer]
+
+show_on_startup=false
+
 [application]
 
 config/name="How-Conditional-Turn-Based-Combat-Works"
@@ -17,4 +21,15 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-EventBus="*res://event_bus.gd"
+EventBus="*res://Scripts/event_bus.gd"
+SoundManager="*res://addons/godot_sound_manager-main/addons/sound_manager/sound_manager.gd"
+EmbedGameAutoload="*res://addons/fabimakesgames.embed_game/embed_game_autoload.gd"
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fabimakesgames.embed_game/plugin.cfg", "res://addons/godot_sound_manager-main/addons/sound_manager/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/script-ide-master/script-ide-master/addons/script-ide/plugin.cfg")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
