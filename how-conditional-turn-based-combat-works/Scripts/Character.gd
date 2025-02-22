@@ -14,12 +14,12 @@ class_name Character
 @export var health : float
 @export var skill_list : Array
 
-
+var is_alive = true
 var speed: float
 var queue : Array[float]
 var status = 1
 var node
-var temp_health : float
+var temp_health : float = health
 
 func queue_reset():
 	queue.clear()
@@ -44,9 +44,11 @@ func attack(tree):
 	await tween_movement(-shift, tree)
 	await tween_movement(shift, tree)
  
+	take_damage(damage)
 	EventBus.next_attack.emit()
 
 func take_damage(amount):
+	
 	health = health + temp_health - amount
 	return health
 

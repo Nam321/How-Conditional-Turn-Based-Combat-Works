@@ -25,6 +25,7 @@ EventBus="*res://Scripts/event_bus.gd"
 SoundManager="*res://addons/godot_sound_manager-main/addons/sound_manager/sound_manager.gd"
 EmbedGameAutoload="*res://addons/fabimakesgames.embed_game/embed_game_autoload.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+Debug="*res://TampopoUtilityGodot4/Globals/debug.gd"
 
 [editor_plugins]
 

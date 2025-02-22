@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsox1o2mewgc3"]
+[gd_scene load_steps=10 format=3 uid="uid://dsox1o2mewgc3"]
 
 [ext_resource type="Texture2D" uid="uid://bdsrb3k3fxpsf" path="res://Assets/ATTACK FREE/BigSlashV.png" id="1_gyibv"]
 [ext_resource type="AudioStream" uid="uid://bu38xl028p0ho" path="res://Assets/SFX/Something being hit - Sound Effect.wav" id="2_1lhmj"]
@@ -171,6 +171,10 @@ tracks/5/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_t8wb4"]
+resource_name = "hurt"
+step = 0.0833333
+
 [sub_resource type="Animation" id="Animation_h6ikg"]
 resource_name = "slash"
 length = 0.416675
@@ -266,6 +270,7 @@ tracks/6/keys = {
 _data = {
 "Haste": SubResource("Animation_8dbj3"),
 "RESET": SubResource("Animation_scftw"),
+"hurt": SubResource("Animation_t8wb4"),
 "slash": SubResource("Animation_h6ikg")
 }
 
@@ -282,3 +287,5 @@ autoplay = "slash"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_1lhmj")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
