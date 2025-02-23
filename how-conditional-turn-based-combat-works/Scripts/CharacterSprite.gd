@@ -2,6 +2,7 @@ extends Sprite2D
 
 
 @export var character : Character
+signal character_died
 var health_max
 var current_health 
 var attack_dmg
@@ -18,4 +19,11 @@ func _ready():
 		print("max hp",current_health)
 		
 
+func take_damage(amount):
+	current_health -= amount
+	print("Took damage: ", amount, " Current health: ", current_health)
+	if current_health <= 0:
+		is_alive = false
+		character_died.emit()  # Add this line
+		queue_free()
 	

@@ -11,7 +11,8 @@ extends Node2D
 var sorted_array = []
 var players : Array[Character]
 var enemies : Array[Character]
- 
+var selected_target: Character
+
 func _ready():
 	for player in player_group.get_children():
 		players.append(player.character)
@@ -78,9 +79,14 @@ func attack():
 func next_attack():
 	if sorted_array[0]["character"] in players:
 		return
-	attack()
+	
+	var attacker = sorted_array[0]["character"]
+	attacker.attack(get_tree())
+	var target_character = players.pick_random()
+	var target_node = target_character.node  
+	target_node.take_damage(attacker.damage)  
+	target_character.get_attacked()  
 	pop_out()
-	players.pick_random().get_attacked()
  
 func set_status(status_type):
 	sorted_array[0]["character"].set_status(status_type)

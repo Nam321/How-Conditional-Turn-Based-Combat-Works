@@ -13,5 +13,5 @@ texture = ExtResource("3_p2vw8")
 agility = 17
 vfx_node = ExtResource("4_ubyng")
 damage = 1.0
-health = 100.0
+health = 5.0
 skill_list = []
