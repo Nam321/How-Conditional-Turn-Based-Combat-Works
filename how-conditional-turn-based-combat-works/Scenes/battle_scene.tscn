@@ -1,21 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://cpp3e0l8juudt"]
+[gd_scene load_steps=16 format=3 uid="uid://cpp3e0l8juudt"]
 
 [ext_resource type="Script" path="res://Scripts/battle_scene.gd" id="1_4o4nq"]
 [ext_resource type="PackedScene" uid="uid://dpd8d2nuknfwr" path="res://Scenes/select_button.tscn" id="2_fs322"]
 [ext_resource type="Script" path="res://Scripts/CharacterSprite.gd" id="2_ptxip"]
-[ext_resource type="Script" path="res://TampopoUtilityGodot4/menu.gd" id="3_2u1jg"]
 [ext_resource type="Script" path="res://Scenes/attack.gd" id="3_58f5c"]
 [ext_resource type="Resource" uid="uid://deq4le1e0p3pv" path="res://Resources/Bob.tres" id="3_a8cvi"]
 [ext_resource type="Resource" uid="uid://b22yqipjyrkr1" path="res://Resources/Lucy.tres" id="4_0pdiu"]
 [ext_resource type="Script" path="res://Scenes/skill.gd" id="4_bthrp"]
 [ext_resource type="Script" path="res://Scenes/haste.gd" id="4_ffwu6"]
 [ext_resource type="Resource" uid="uid://62k2dqpinytf" path="res://Resources/Tim.tres" id="5_kbemd"]
-[ext_resource type="PackedScene" uid="uid://bvv1nbodycp04" path="res://TampopoUtilityGodot4/menu_cursor.tscn" id="6_obd2l"]
 [ext_resource type="Resource" uid="uid://bg506p3luyecq" path="res://Resources/Gorgon.tres" id="6_rmyri"]
 [ext_resource type="Resource" uid="uid://cj7ssvln4voej" path="res://Resources/Water elemental.tres" id="7_j4jbj"]
-[ext_resource type="Texture2D" uid="uid://bcneluqoq7138" path="res://Assets/cursor_finger.png" id="8_xrfvg"]
-[ext_resource type="Script" path="res://Scenes/label.gd" id="9_oawpk"]
+[ext_resource type="Script" path="res://label.gd" id="9_oawpk"]
 [ext_resource type="Resource" uid="uid://c6nnyalglylas" path="res://Resources/Harpy.tres" id="10_epqpy"]
+[ext_resource type="Script" path="res://Scripts/health_label.gd" id="11_xubtm"]
 [ext_resource type="Texture2D" uid="uid://xmqq3fq6c21c" path="res://Assets/BG_FF2_09.png" id="12_ovqkf"]
 
 [node name="BattleScene" type="Node2D" node_paths=PackedStringArray("player_group", "enemy_group", "timeline", "options")]
@@ -23,7 +21,7 @@ script = ExtResource("1_4o4nq")
 player_group = NodePath("Players")
 enemy_group = NodePath("Enemies")
 timeline = NodePath("UI/Timeline")
-options = NodePath("UI/NinePatchRect/Option")
+options = NodePath("UI/options/Option")
 enemy_button = ExtResource("2_fs322")
 ally_button = ExtResource("2_fs322")
 
@@ -112,85 +110,108 @@ offset_bottom = 40.0
 expand_mode = 1
 stretch_mode = 4
 
-[node name="EnemySelection" type="VBoxContainer" parent="UI"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = -1
-anchor_left = 0.486
-anchor_top = 0.325
-anchor_right = 0.486
-anchor_bottom = 0.325
-offset_left = -82.872
-offset_top = 31.4
-offset_right = 40.128
-offset_bottom = 192.4
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.5, 1.5)
+[node name="options" type="NinePatchRect" parent="UI"]
+offset_left = 471.0
+offset_top = 451.5
+offset_right = 598.0
+offset_bottom = 451.5
 
-[node name="AllySelection" type="VBoxContainer" parent="UI"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = -1
-anchor_left = 0.486
-anchor_top = 0.325
-anchor_right = 0.486
-anchor_bottom = 0.325
-offset_left = -83.872
-offset_top = 31.4
-offset_right = 41.128
-offset_bottom = 201.4
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.5, 1.5)
-
-[node name="NinePatchRect" type="NinePatchRect" parent="UI"]
-offset_left = 465.0
-offset_top = 400.0
-offset_right = 601.0
-offset_bottom = 400.0
-script = ExtResource("3_2u1jg")
-
-[node name="Option" type="VBoxContainer" parent="UI/NinePatchRect"]
+[node name="Option" type="VBoxContainer" parent="UI/options"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -62.0
-offset_top = -157.0
-offset_right = 65.0
-offset_bottom = -20.0
+offset_left = -63.5
+offset_top = -208.5
+offset_right = 63.5
+offset_bottom = -71.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
-metadata/_edit_lock_ = true
 
-[node name="Attack" type="Button" parent="UI/NinePatchRect/Option"]
+[node name="Attack" type="Button" parent="UI/options/Option"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Attack"
 script = ExtResource("3_58f5c")
 
-[node name="Skill" type="Button" parent="UI/NinePatchRect/Option"]
+[node name="Skill" type="Button" parent="UI/options/Option"]
 layout_mode = 2
 text = "Skill"
 script = ExtResource("4_bthrp")
 
-[node name="Haste" type="Button" parent="UI/NinePatchRect/Option"]
+[node name="Haste" type="Button" parent="UI/options/Option"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Haste
 "
 script = ExtResource("4_ffwu6")
 
-[node name="Button" type="Button" parent="UI/NinePatchRect/Option"]
+[node name="Button" type="Button" parent="UI/options/Option"]
 layout_mode = 2
 text = "Defend"
 
-[node name="MenuCursor" parent="UI" instance=ExtResource("6_obd2l")]
-texture = ExtResource("8_xrfvg")
+[node name="AllySelection" type="NinePatchRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -77.0
+offset_right = -68.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AllySelection" type="VBoxContainer" parent="UI/AllySelection"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -22.0
+offset_right = 107.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+
+[node name="EnemySelection" type="NinePatchRect" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -78.0
+offset_right = -64.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemySelection" type="VBoxContainer" parent="UI/EnemySelection"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -23.0
+offset_right = 105.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -40.0
@@ -229,13 +250,14 @@ scale = Vector2(4, 4)
 script = ExtResource("2_ptxip")
 character = ExtResource("4_0pdiu")
 
-[node name="ProgressBar3" type="ProgressBar" parent="Players/Player2"]
+[node name="ProgressBar3" type="Label" parent="Players/Player2"]
 offset_left = -16.0
 offset_top = -23.5
 offset_right = 43.0
 offset_bottom = 3.5
 scale = Vector2(0.3, 0.3)
-value = 100.0
+text = "0/0"
+script = ExtResource("11_xubtm")
 
 [node name="Player3" type="Sprite2D" parent="Players"]
 position = Vector2(755, 336)
@@ -243,13 +265,14 @@ scale = Vector2(4, 4)
 script = ExtResource("2_ptxip")
 character = ExtResource("5_kbemd")
 
-[node name="ProgressBar2" type="ProgressBar" parent="Players/Player3"]
-offset_left = -14.25
-offset_top = -23.25
-offset_right = 44.75
-offset_bottom = 3.75
+[node name="ProgressBar4" type="Label" parent="Players/Player3"]
+offset_left = -26.75
+offset_top = -30.5
+offset_right = 32.25
+offset_bottom = -3.5
 scale = Vector2(0.3, 0.3)
-value = 100.0
+text = "0/0"
+script = ExtResource("11_xubtm")
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(177, 343)
@@ -260,13 +283,20 @@ scale = Vector2(3, 3)
 script = ExtResource("2_ptxip")
 character = ExtResource("6_rmyri")
 
-[node name="ProgressBar4" type="ProgressBar" parent="Enemies/Enemy"]
-offset_left = -8.0
-offset_top = -40.0
-offset_right = 51.0
-offset_bottom = -13.0
+[node name="Label2" type="Label" parent="Enemies/Enemy"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.1667
+offset_top = -44.3333
+offset_right = 17.8333
+offset_bottom = -21.3333
+grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
-value = 100.0
+size_flags_horizontal = 0
+text = "0/0"
+uppercase = true
+script = ExtResource("9_oawpk")
 
 [node name="Enemy2" type="Sprite2D" parent="Enemies"]
 position = Vector2(141, 31)
@@ -274,13 +304,20 @@ scale = Vector2(3, 3)
 script = ExtResource("2_ptxip")
 character = ExtResource("10_epqpy")
 
-[node name="ProgressBar5" type="ProgressBar" parent="Enemies/Enemy2"]
-offset_left = -11.0
-offset_top = -36.0
-offset_right = 48.0
-offset_bottom = -9.0
+[node name="Label3" type="Label" parent="Enemies/Enemy2"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.1667
+offset_top = -40.0
+offset_right = 31.8333
+offset_bottom = -17.0
+grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
-value = 100.0
+size_flags_horizontal = 0
+text = "0/0"
+uppercase = true
+script = ExtResource("9_oawpk")
 
 [node name="Enemy3" type="Sprite2D" parent="Enemies"]
 position = Vector2(1.00001, 145)
@@ -288,14 +325,21 @@ scale = Vector2(3, 3)
 script = ExtResource("2_ptxip")
 character = ExtResource("7_j4jbj")
 
-[node name="ProgressBar6" type="ProgressBar" parent="Enemies/Enemy3"]
-offset_left = -17.0
-offset_top = -44.0
-offset_right = 42.0
-offset_bottom = -17.0
+[node name="Label4" type="Label" parent="Enemies/Enemy3"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.8333
+offset_top = -40.3333
+offset_right = 8.16666
+offset_bottom = -17.3333
+grow_horizontal = 2
 scale = Vector2(0.5, 0.5)
-value = 100.0
+size_flags_horizontal = 0
+text = "0/0"
+uppercase = true
+script = ExtResource("9_oawpk")
 
-[connection signal="pressed" from="UI/NinePatchRect/Option/Attack" to="UI/NinePatchRect/Option/Attack" method="_on_pressed"]
-[connection signal="pressed" from="UI/NinePatchRect/Option/Skill" to="UI/NinePatchRect/Option/Skill" method="_on_pressed"]
-[connection signal="pressed" from="UI/NinePatchRect/Option/Haste" to="UI/NinePatchRect/Option/Haste" method="_on_pressed"]
+[connection signal="pressed" from="UI/options/Option/Attack" to="UI/options/Option/Attack" method="_on_pressed"]
+[connection signal="pressed" from="UI/options/Option/Skill" to="UI/options/Option/Skill" method="_on_pressed"]
+[connection signal="pressed" from="UI/options/Option/Haste" to="UI/options/Option/Haste" method="_on_pressed"]

@@ -10,17 +10,18 @@ class_name Character
 		speed = 200.0 / (log(agility) + 2) - 25
 		queue_reset()
 @export var vfx_node : PackedScene = preload("res://Scenes/vfx.tscn")
-@export var damage : float
-@export var health : float
+@export var damage : float 
+@export var health : float 
 @export var skill_list : Array
-
-var is_alive = true
 var speed: float
 var queue : Array[float]
 var status = 1
 var node
-var temp_health : float = health
+var is_alive : bool
+var temp_health : float 
+var dmg : float
 
+	
 func queue_reset():
 	queue.clear()
 	for i in range(4):
@@ -32,10 +33,10 @@ func queue_reset():
  
 func tween_movement(shift, tree):
 	var tween = tree.create_tween()
-	tween.tween_property(node, "position", node.position + shift, 0.5)
+	tween.tween_property(node, "position", node.position + shift, 0.75)
 	await tween.finished
  
- 
+ #attack animation
 func attack(tree):
 	var shift = Vector2(30,0)
 	if node.position.x < node.get_viewport_rect().size.x/2:
@@ -43,15 +44,9 @@ func attack(tree):
  
 	await tween_movement(-shift, tree)
 	await tween_movement(shift, tree)
- 
-	take_damage(damage)
-	EventBus.next_attack.emit()
-
-func take_damage(amount):
+ 	
 	
-	health = health + temp_health - amount
-	return health
-
+	EventBus.next_attack.emit()
 
  
 func pop_out():
@@ -69,6 +64,7 @@ func add_vfx(type : String = ""):
  
 func get_attacked(type = ""):
 	add_vfx(type)
+	
  
  
 func set_status(status_type : String):
@@ -88,3 +84,7 @@ func set_status(status_type : String):
 		queue.append(queue[-1] + speed * status)
 	print(queue)
 	
+
+func take_damage(amount):
+	temp_health -=amount 
+		

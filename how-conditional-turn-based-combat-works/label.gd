@@ -8,5 +8,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-	#self.text = str(get_parent().current_health) + str(" / ") + str(get_parent().health) 
+	
+	self.text = str(get_parent().current_health) + str(" / ") + str(get_parent().health_max) 

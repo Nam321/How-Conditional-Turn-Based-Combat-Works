@@ -5,7 +5,8 @@ const OFFSET: Vector2 = Vector2(-16, -2)
 var target: Node = null
 
 func _enter_tree() -> void:
-	Menus.menu_cursor = self
+	pass
+	#Menus.menu_cursor = self
 
 func _ready() -> void:
 	get_viewport().gui_focus_changed.connect(_on_viewport_gui_focus_changed)
