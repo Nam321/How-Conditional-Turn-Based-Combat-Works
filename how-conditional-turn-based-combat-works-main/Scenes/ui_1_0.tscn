@@ -1,0 +1,131 @@
+[gd_scene load_steps=3 format=3 uid="uid://dte1saybxv2fe"]
+
+[ext_resource type="Script" path="res://Scenes/attack.gd" id="1_aaekf"]
+[ext_resource type="Script" path="res://Scenes/haste.gd" id="2_vs40c"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Timeline" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.0
+offset_top = 111.0
+offset_right = 129.0
+offset_bottom = 151.0
+grow_horizontal = 2
+
+[node name="TimelineSlot" type="Panel" parent="Timeline"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Timeline/TimelineSlot"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TimelineSlot2" type="Panel" parent="Timeline"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Timeline/TimelineSlot2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TimelineSlot3" type="Panel" parent="Timeline"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Timeline/TimelineSlot3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TimelineSlot4" type="Panel" parent="Timeline"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Timeline/TimelineSlot4"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TimelineSlot5" type="Panel" parent="Timeline"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Timeline/TimelineSlot5"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TimelineSlot6" type="Panel" parent="Timeline"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Timeline/TimelineSlot6"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Option" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -136.0
+offset_right = 20.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Attack" type="Button" parent="Option"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Attack"
+script = ExtResource("1_aaekf")
+
+[node name="Haste" type="Button" parent="Option"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Haste
+"
+script = ExtResource("2_vs40c")
+
+[node name="EnemySelection" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.486
+anchor_top = 0.325
+anchor_right = 0.486
+anchor_bottom = 0.325
+offset_left = -39.872
+offset_top = -29.6
+offset_right = 40.128
+offset_bottom = 29.4
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Option/Attack" to="Option/Attack" method="_on_pressed"]
+[connection signal="pressed" from="Option/Haste" to="Option/Haste" method="_on_pressed"]

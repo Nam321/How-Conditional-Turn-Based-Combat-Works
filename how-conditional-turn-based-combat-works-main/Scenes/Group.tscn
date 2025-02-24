@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8m8ysfd63t83"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterSprite.gd" id="1_4wdif"]
+[ext_resource type="Resource" uid="uid://bg506p3luyecq" path="res://Resources/Gorgon.tres" id="2_lrhsw"]
+[ext_resource type="Resource" uid="uid://b22yqipjyrkr1" path="res://Resources/Lucy.tres" id="3_x4cu2"]
+[ext_resource type="Resource" uid="uid://62k2dqpinytf" path="res://Resources/Tim.tres" id="4_up4d5"]
+
+[node name="Players" type="Node2D"]
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(704, 169)
+script = ExtResource("1_4wdif")
+character = ExtResource("2_lrhsw")
+
+[node name="Player2" type="Sprite2D" parent="."]
+position = Vector2(652, 215)
+script = ExtResource("1_4wdif")
+character = ExtResource("3_x4cu2")
+
+[node name="Player3" type="Sprite2D" parent="."]
+position = Vector2(708, 274)
+script = ExtResource("1_4wdif")
+character = ExtResource("4_up4d5")
