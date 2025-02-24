@@ -77,6 +77,11 @@ func attack():
  
  
 func next_attack():
+	if sorted_array.is_empty():
+		return
+	
+	await get_tree().process_frame 
+	sort_and_display()
 	if sorted_array[0]["character"] in players:
 		return
 	

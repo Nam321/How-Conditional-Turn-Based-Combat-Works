@@ -45,7 +45,7 @@ func attack(tree):
 	await tween_movement(-shift, tree)
 	await tween_movement(shift, tree)
  	
-	await tree.create_timer(0.75).timeout 
+	await tree.create_timer(0.5).timeout 
 	EventBus.next_attack.emit()
 
  
